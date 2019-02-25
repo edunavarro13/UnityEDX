@@ -32,6 +32,15 @@ public class Move : MonoBehaviour {
             rigidbody.AddForce(Vector3.up * jumpValue, ForceMode.Impulse);
             audio.Play();
         }
+        // Para que la bola salte cuando pulsemos en la pantalla del movil
+        if (Input.touchCount == 1)
+        {
+            if (Input.touches[0].phase == TouchPhase.Began && Mathf.Abs(rigidbody.velocity.y) < 0.01f)
+            {
+                rigidbody.AddForce(Vector3.up * jumpValue, ForceMode.Impulse);
+                audio.Play();
+            }
+        }
     }
 
     void FixedUpdate()
@@ -39,5 +48,10 @@ public class Move : MonoBehaviour {
         rigidbody.AddForce(new Vector3(Input.GetAxis("Horizontal"),
             0,
             Input.GetAxis("Vertical")) * forceValue);
+
+        // Para que la bola se mueva cuando se mueva el movil
+        rigidbody.AddForce(new Vector3(Input.acceleration.x,
+           0,
+           Input.acceleration.y) * forceValue);
     }
 }
