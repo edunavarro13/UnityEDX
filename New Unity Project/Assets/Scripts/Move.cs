@@ -11,6 +11,9 @@ public class Move : MonoBehaviour {
     private Rigidbody rigidbody;
     private AudioSource audio;
 
+    //Ejercicio propuesto tema 5
+    public int live = 100;
+
 	// Use this for initialization
 	void Start () {
         rigidbody = GetComponent<Rigidbody>();
@@ -53,5 +56,26 @@ public class Move : MonoBehaviour {
         rigidbody.AddForce(new Vector3(Input.acceleration.x,
            0,
            Input.acceleration.y) * forceValue);
+    }
+
+    // Para cuando choque con un elemento con el tag enemigo
+    void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Enemigo")
+        {
+            this.live -= 1;
+            print("Collision con un enemigo Vida=" + this.live);
+            if (this.live == 0)
+            {
+                Destroy(gameObject);
+                print("Game over");
+            }
+            //Destroy(collision.gameObject);
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        print("Entrado en la zona oscura");
     }
 }

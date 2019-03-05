@@ -53,6 +53,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Eruption.cs" />
+     <Compile Include="Assets\Scripts\Follow.cs" />
+     <Compile Include="Assets\Scripts\Impulse.cs" />
      <Compile Include="Assets\Scripts\Move.cs" />
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>C:/Users/eduna/Desktop/RepositorioBootcamp/UnityEDX/New Unity Project/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
